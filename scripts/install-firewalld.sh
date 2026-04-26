@@ -16,7 +16,7 @@ set -euo pipefail
 
 # 脚本所在 GitHub 仓库的 raw 文件基础 URL
 # 当通过 curl | bash 方式运行时，可通过环境变量 REPO_RAW_URL 覆盖
-REPO_RAW_URL="${REPO_RAW_URL:-https://raw.githubusercontent.com/<OWNER>/<REPO>/main}"
+REPO_RAW_URL="${REPO_RAW_URL:-https://raw.githubusercontent.com/Somethingbear/firewalld/main}"
 
 # public.xml 的完整下载地址
 PUBLIC_XML_URL="${PUBLIC_XML_URL:-${REPO_RAW_URL}/scripts/public.xml}"
