@@ -2,7 +2,7 @@
 #
 # Firewalld 一键安装配置脚本
 # 用法:
-#   curl -fsSL https://raw.githubusercontent.com/<OWNER>/<REPO>/main/scripts/install-firewalld.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/Somethingbear/firewalld/main/scripts/install-firewalld.sh | bash
 #
 # 也可以指定 public.xml 的下载地址:
 #   curl -fsSL https://raw.githubusercontent.com/<OWNER>/<REPO>/main/scripts/install-firewalld.sh | REPO_RAW_URL=https://raw.githubusercontent.com/<OWNER>/<REPO>/main bash
@@ -110,7 +110,7 @@ deploy_zone_config() {
   info "public.xml 已部署到 $target"
 
   # 重载防火墙规则
-  firewall-cmd --reload
+  firewall-cmd --reload && firewall-cmd --list-all
   info "防火墙规则已重载"
 }
 
