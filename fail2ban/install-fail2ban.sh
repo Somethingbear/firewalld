@@ -76,11 +76,16 @@ log "启用并重启 fail2ban..."
 systemctl enable fail2ban >/dev/null 2>&1
 systemctl restart fail2ban
 
-# 等就绪
-for _ in 1 2 3 4 5; do
-    systemctl is-active --quiet fail2ban && break
+# 等 socket 真正就绪 (systemctl active 早于 socket 创建, 是常见 race)
+READY=0
+for _ in $(seq 1 15); do
+    if fail2ban-client ping >/dev/null 2>&1; then
+        READY=1
+        break
+    fi
     sleep 1
 done
+[[ $READY -eq 1 ]] || warn "fail2ban socket 等待 15s 仍未就绪, 稍后请手动确认"
 
 # ---------- 汇报 ----------
 echo
@@ -88,7 +93,8 @@ log "部署完成 ✓"
 echo "----------------------------------------"
 echo "服务状态: $(systemctl is-active fail2ban)"
 echo "----------------------------------------"
-fail2ban-client status sshd
+fail2ban-client status sshd 2>/dev/null \
+    || warn "fail2ban-client 暂时拿不到 sshd 状态, 稍等几秒手动执行: sudo fail2ban-client status sshd"
 echo "----------------------------------------"
 cat <<'TIPS'
 常用命令:
