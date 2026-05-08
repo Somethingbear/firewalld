@@ -46,7 +46,7 @@ fi
 log "写入 /etc/fail2ban/jail.local"
 cat > /etc/fail2ban/jail.local <<EOF
 [DEFAULT]
-ignoreip = 127.0.0.1/8 ::1
+ignoreip = 127.0.0.1/8 ::1 129.226.212.130
 findtime = ${FINDTIME}
 maxretry = ${MAXRETRY}
 bantime  = ${BANTIME}
@@ -99,7 +99,6 @@ echo "----------------------------------------"
 cat <<'TIPS'
 常用命令:
   查看状态:        sudo fail2ban-client status sshd
-  当前封禁列表:    sudo fail2ban-client banned
   手动解封:        sudo fail2ban-client set sshd unbanip <IP>
   手动封禁:        sudo fail2ban-client set sshd banip <IP>
   实时日志:        sudo tail -f /var/log/fail2ban.log
