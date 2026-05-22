@@ -3564,4 +3564,16 @@
   <forward-port port="11536" protocol="udp" to-port="28486" to-addr="38.86.36.43"/>
   <forward-port port="42924" protocol="tcp" to-port="20927" to-addr="38.84.94.98"/>
   <forward-port port="42924" protocol="udp" to-port="20927" to-addr="38.84.94.98"/>
+  <forward-port port="47622" protocol="tcp" to-port="39944" to-addr="38.76.57.214"/>
+  <forward-port port="47622" protocol="udp" to-port="39944" to-addr="38.76.57.214"/>
+  <forward-port port="43326" protocol="tcp" to-port="20281" to-addr="38.106.14.166"/>
+  <forward-port port="43326" protocol="udp" to-port="20281" to-addr="38.106.14.166"/>
+  <forward-port port="36950" protocol="tcp" to-port="32223" to-addr="38.84.94.42"/>
+  <forward-port port="36950" protocol="udp" to-port="32223" to-addr="38.84.94.42"/>
+  <forward-port port="58088" protocol="tcp" to-port="38753" to-addr="38.84.94.164"/>
+  <forward-port port="58088" protocol="udp" to-port="38753" to-addr="38.84.94.164"/>
+  <forward-port port="53601" protocol="tcp" to-port="38649" to-addr="38.84.88.158"/>
+  <forward-port port="53601" protocol="udp" to-port="38649" to-addr="38.84.88.158"/>
+  <forward-port port="16869" protocol="tcp" to-port="36787" to-addr="38.84.89.98"/>
+  <forward-port port="16869" protocol="udp" to-port="36787" to-addr="38.84.89.98"/>
 </zone>
