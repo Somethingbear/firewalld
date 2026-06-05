@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Firewalld 一键安装配置脚本
+# Firewalld 一键安装配置脚本（支持 Ubuntu/Debian、CentOS/RHEL）
 # 用法:
 #   curl -fsSL https://raw.githubusercontent.com/Somethingbear/firewalld/main/scripts/install-firewalld.sh | bash
 #
@@ -29,9 +29,59 @@ info()  { echo -e "\033[1;32m[INFO]\033[0m  $*"; }
 warn()  { echo -e "\033[1;33m[WARN]\033[0m  $*"; }
 error() { echo -e "\033[1;31m[ERROR]\033[0m $*"; exit 1; }
 
+OS_ID=""
+OS_LIKE=""
+PKG_MANAGER=""
+
 require_root() {
   if [[ $EUID -ne 0 ]]; then
     error "请使用 root 用户执行此脚本（sudo bash ...）"
+  fi
+}
+
+detect_system() {
+  if [[ -r /etc/os-release ]]; then
+    # shellcheck disable=SC1091
+    . /etc/os-release
+    OS_ID="${ID:-}"
+    OS_LIKE="${ID_LIKE:-}"
+  fi
+
+  if command -v apt-get &>/dev/null; then
+    PKG_MANAGER="apt"
+  elif command -v dnf &>/dev/null; then
+    PKG_MANAGER="dnf"
+  elif command -v yum &>/dev/null; then
+    PKG_MANAGER="yum"
+  else
+    error "未检测到 apt-get、dnf 或 yum，无法安装 firewalld"
+  fi
+
+  info "检测到系统: ${OS_ID:-unknown}，包管理器: $PKG_MANAGER"
+}
+
+install_packages() {
+  case "$PKG_MANAGER" in
+    apt)
+      export DEBIAN_FRONTEND=noninteractive
+      apt-get update
+      apt-get install -y "$@"
+      ;;
+    dnf)
+      dnf install -y "$@"
+      ;;
+    yum)
+      yum install -y "$@"
+      ;;
+    *)
+      error "不支持的包管理器: $PKG_MANAGER"
+      ;;
+  esac
+}
+
+warn_ufw_conflict() {
+  if command -v ufw &>/dev/null && ufw status 2>/dev/null | grep -qi "Status: active"; then
+    warn "检测到 ufw 正在启用；脚本不会自动关闭 ufw。如防火墙规则异常，请确认只保留一个防火墙管理器。"
   fi
 }
 
@@ -40,7 +90,12 @@ require_root() {
 # ============================
 
 fix_centos_repos() {
-  info "Step 1/4 — 修复 CentOS yum 镜像源 ..."
+  info "Step 1/4 — 检查 CentOS yum 镜像源 ..."
+
+  if [[ "$OS_ID" != "centos" && "$OS_LIKE" != *"rhel"* ]]; then
+    info "当前不是 CentOS/RHEL 系统，跳过镜像源修复"
+    return
+  fi
 
   # 仅在 CentOS 系统且存在 CentOS-* repo 文件时执行
   if [[ -d /etc/yum.repos.d ]] && ls /etc/yum.repos.d/CentOS-* &>/dev/null; then
@@ -53,17 +108,29 @@ fix_centos_repos() {
 }
 
 # ============================
-#  Step 2: 安装 firewalld
+#  Step 2: 安装 firewalld 及依赖
 # ============================
 
 install_firewalld() {
-  info "Step 2/4 — 安装 firewalld ..."
+  info "Step 2/4 — 安装 firewalld 及依赖 ..."
+
+  local packages=()
 
   if command -v firewall-cmd &>/dev/null; then
     info "firewalld 已安装，跳过"
   else
-    yum install -y firewalld
-    info "firewalld 安装完成"
+    packages+=("firewalld")
+  fi
+
+  if ! command -v curl &>/dev/null && ! command -v wget &>/dev/null; then
+    packages+=("curl")
+  fi
+
+  if [[ ${#packages[@]} -eq 0 ]]; then
+    info "firewalld 和下载工具已安装，跳过"
+  else
+    install_packages "${packages[@]}"
+    info "软件包安装完成: ${packages[*]}"
   fi
 }
 
@@ -90,6 +157,7 @@ deploy_zone_config() {
   info "Step 4/4 — 部署 public.xml 区域配置 ..."
 
   local target="/etc/firewalld/zones/public.xml"
+  mkdir -p "$(dirname "$target")"
 
   # 备份已有的 public.xml
   if [[ -f "$target" ]]; then
@@ -126,8 +194,10 @@ main() {
   echo ""
 
   require_root
+  detect_system
   fix_centos_repos
   install_firewalld
+  warn_ufw_conflict
   configure_firewalld
   deploy_zone_config
 
