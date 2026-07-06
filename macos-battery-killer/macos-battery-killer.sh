@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-THRESHOLD_PERCENT="${THRESHOLD_PERCENT:-5}"
+THRESHOLD_PERCENT="${THRESHOLD_PERCENT:-1}"
 RUN_SECONDS="${RUN_SECONDS:-630}"
 CINEBENCH_BIN="${CINEBENCH_BIN:-/Applications/Cinebench.app/Contents/MacOS/benchmark}"
 CINEBENCH_ARGS=(g_CinebenchCpuXTest=true)
