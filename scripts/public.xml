@@ -4654,4 +4654,32 @@
   <forward-port port="42873" protocol="udp" to-port="26180" to-addr="38.76.55.208"/>
   <forward-port port="13419" protocol="tcp" to-port="12615" to-addr="157.85.105.152"/>
   <forward-port port="13419" protocol="udp" to-port="12615" to-addr="157.85.105.152"/>
+  <forward-port port="48095" protocol="tcp" to-port="28322" to-addr="154.41.68.143"/>
+  <forward-port port="48095" protocol="udp" to-port="28322" to-addr="154.41.68.143"/>
+  <forward-port port="54414" protocol="tcp" to-port="37435" to-addr="154.51.252.103"/>
+  <forward-port port="54414" protocol="udp" to-port="37435" to-addr="154.51.252.103"/>
+  <forward-port port="57272" protocol="tcp" to-port="23612" to-addr="154.51.252.102"/>
+  <forward-port port="57272" protocol="udp" to-port="23612" to-addr="154.51.252.102"/>
+  <forward-port port="16820" protocol="tcp" to-port="36007" to-addr="38.86.37.65"/>
+  <forward-port port="16820" protocol="udp" to-port="36007" to-addr="38.86.37.65"/>
+  <forward-port port="22617" protocol="tcp" to-port="22867" to-addr="38.66.105.223"/>
+  <forward-port port="22617" protocol="udp" to-port="22867" to-addr="38.66.105.223"/>
+  <forward-port port="37366" protocol="tcp" to-port="22142" to-addr="38.66.105.105"/>
+  <forward-port port="37366" protocol="udp" to-port="22142" to-addr="38.66.105.105"/>
+  <forward-port port="29559" protocol="tcp" to-port="38804" to-addr="38.127.23.96"/>
+  <forward-port port="29559" protocol="udp" to-port="38804" to-addr="38.127.23.96"/>
+  <forward-port port="31515" protocol="tcp" to-port="24878" to-addr="38.229.164.15"/>
+  <forward-port port="31515" protocol="udp" to-port="24878" to-addr="38.229.164.15"/>
+  <forward-port port="45804" protocol="tcp" to-port="29428" to-addr="38.229.166.116"/>
+  <forward-port port="45804" protocol="udp" to-port="29428" to-addr="38.229.166.116"/>
+  <forward-port port="54049" protocol="tcp" to-port="31494" to-addr="38.108.110.163"/>
+  <forward-port port="54049" protocol="udp" to-port="31494" to-addr="38.108.110.163"/>
+  <forward-port port="43739" protocol="tcp" to-port="28028" to-addr="38.125.84.163"/>
+  <forward-port port="43739" protocol="udp" to-port="28028" to-addr="38.125.84.163"/>
+  <forward-port port="18092" protocol="tcp" to-port="22930" to-addr="38.66.201.83"/>
+  <forward-port port="18092" protocol="udp" to-port="22930" to-addr="38.66.201.83"/>
+  <forward-port port="29253" protocol="tcp" to-port="31113" to-addr="154.18.253.203"/>
+  <forward-port port="29253" protocol="udp" to-port="31113" to-addr="154.18.253.203"/>
+  <forward-port port="41825" protocol="tcp" to-port="20161" to-addr="38.135.190.141"/>
+  <forward-port port="41825" protocol="udp" to-port="20161" to-addr="38.135.190.141"/>
 </zone>
