@@ -6,7 +6,6 @@
   <service name="dhcpv6-client"/>
   <service name="cockpit"/>
   <port port="22" protocol="tcp"/>
-  <port port="33899" protocol="tcp"/>
   <masquerade/>
   <forward-port port="27019" protocol="tcp" to-port="37048" to-addr="38.106.4.111"/>
   <forward-port port="27019" protocol="udp" to-port="37048" to-addr="38.106.4.111"/>
@@ -4682,4 +4681,34 @@
   <forward-port port="29253" protocol="udp" to-port="31113" to-addr="154.18.253.203"/>
   <forward-port port="41825" protocol="tcp" to-port="20161" to-addr="38.135.190.141"/>
   <forward-port port="41825" protocol="udp" to-port="20161" to-addr="38.135.190.141"/>
+  <forward-port port="53103" protocol="tcp" to-port="23138" to-addr="38.121.22.212"/>
+  <forward-port port="53103" protocol="udp" to-port="23138" to-addr="38.121.22.212"/>
+  <forward-port port="26367" protocol="tcp" to-port="37335" to-addr="38.143.28.42"/>
+  <forward-port port="26367" protocol="udp" to-port="37335" to-addr="38.143.28.42"/>
+  <forward-port port="48888" protocol="tcp" to-port="38052" to-addr="38.96.190.16"/>
+  <forward-port port="48888" protocol="udp" to-port="38052" to-addr="38.96.190.16"/>
+  <forward-port port="42909" protocol="tcp" to-port="33149" to-addr="38.86.37.2"/>
+  <forward-port port="42909" protocol="udp" to-port="33149" to-addr="38.86.37.2"/>
+  <forward-port port="45920" protocol="tcp" to-port="38177" to-addr="38.108.117.43"/>
+  <forward-port port="45920" protocol="udp" to-port="38177" to-addr="38.108.117.43"/>
+  <forward-port port="41535" protocol="tcp" to-port="38739" to-addr="38.89.135.108"/>
+  <forward-port port="41535" protocol="udp" to-port="38739" to-addr="38.89.135.108"/>
+  <forward-port port="20046" protocol="tcp" to-port="38739" to-addr="38.89.135.108"/>
+  <forward-port port="20046" protocol="udp" to-port="38739" to-addr="38.89.135.108"/>
+  <forward-port port="25000" protocol="tcp" to-port="24466" to-addr="38.96.190.3"/>
+  <forward-port port="25000" protocol="udp" to-port="24466" to-addr="38.96.190.3"/>
+  <forward-port port="25001" protocol="tcp" to-port="38552" to-addr="38.121.23.253"/>
+  <forward-port port="25001" protocol="udp" to-port="38552" to-addr="38.121.23.253"/>
+  <forward-port port="25002" protocol="tcp" to-port="20521" to-addr="154.51.254.162"/>
+  <forward-port port="25002" protocol="udp" to-port="20521" to-addr="154.51.254.162"/>
+  <forward-port port="25003" protocol="tcp" to-port="21178" to-addr="154.51.253.249"/>
+  <forward-port port="25003" protocol="udp" to-port="21178" to-addr="154.51.253.249"/>
+  <forward-port port="25004" protocol="tcp" to-port="30183" to-addr="154.51.254.30"/>
+  <forward-port port="25004" protocol="udp" to-port="30183" to-addr="154.51.254.30"/>
+  <forward-port port="25006" protocol="tcp" to-port="32780" to-addr="154.51.254.39"/>
+  <forward-port port="25006" protocol="udp" to-port="32780" to-addr="154.51.254.39"/>
+  <forward-port port="25007" protocol="tcp" to-port="38414" to-addr="38.66.202.157"/>
+  <forward-port port="25007" protocol="udp" to-port="38414" to-addr="38.66.202.157"/>
+  <forward-port port="25008" protocol="tcp" to-port="30362" to-addr="154.51.255.115"/>
+  <forward-port port="25008" protocol="udp" to-port="30362" to-addr="154.51.255.115"/>
 </zone>
