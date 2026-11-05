@@ -7,6 +7,14 @@
   <service name="cockpit"/>
   <port port="22" protocol="tcp"/>
   <masquerade/>
+  <rule family="ipv4">
+    <source address="8.159.159.119/32"/>
+    <forward-port port="18080" protocol="tcp" to-port="10000" to-addr="162.128.70.224"/>
+  </rule>
+  <rule family="ipv4">
+    <source address="47.103.129.123/32"/>
+    <forward-port port="18080" protocol="tcp" to-port="10000" to-addr="162.128.70.224"/>
+  </rule>
   <forward-port port="27019" protocol="tcp" to-port="37048" to-addr="38.106.4.111"/>
   <forward-port port="27019" protocol="udp" to-port="37048" to-addr="38.106.4.111"/>
   <forward-port port="24652" protocol="tcp" to-port="25843" to-addr="38.106.5.163"/>
