@@ -6,15 +6,12 @@
   <service name="dhcpv6-client"/>
   <service name="cockpit"/>
   <port port="22" protocol="tcp"/>
+  <port port="53111" protocol="tcp"/>
   <masquerade/>
-  <rule family="ipv4">
-    <source address="8.159.159.119/32"/>
-    <forward-port port="18080" protocol="tcp" to-port="10000" to-addr="162.128.70.224"/>
-  </rule>
-  <rule family="ipv4">
-    <source address="47.103.129.123/32"/>
-    <forward-port port="18080" protocol="tcp" to-port="10000" to-addr="162.128.70.224"/>
-  </rule>
+  <forward-port port="18080" protocol="tcp" to-port="10000" to-addr="154.197.57.243"/>
+  <forward-port port="18080" protocol="udp" to-port="10000" to-addr="154.197.57.243"/>
+  <forward-port port="18081" protocol="tcp" to-port="10000" to-addr="66.80.1.82"/>
+  <forward-port port="18081" protocol="udp" to-port="10000" to-addr="66.80.1.82"/>
   <forward-port port="27019" protocol="tcp" to-port="37048" to-addr="38.106.4.111"/>
   <forward-port port="27019" protocol="udp" to-port="37048" to-addr="38.106.4.111"/>
   <forward-port port="24652" protocol="tcp" to-port="25843" to-addr="38.106.5.163"/>
@@ -4827,4 +4824,12 @@
   <forward-port port="25077" protocol="udp" to-port="38794" to-addr="38.106.4.131"/>
   <forward-port port="25076" protocol="tcp" to-port="30379" to-addr="38.127.23.102"/>
   <forward-port port="25076" protocol="udp" to-port="30379" to-addr="38.127.23.102"/>
+  <forward-port port="25090" protocol="tcp" to-port="29672" to-addr="38.108.117.209"/>
+  <forward-port port="25090" protocol="udp" to-port="29672" to-addr="38.108.117.209"/>
+  <forward-port port="25089" protocol="tcp" to-port="20998" to-addr="38.108.117.247"/>
+  <forward-port port="25089" protocol="udp" to-port="20998" to-addr="38.108.117.247"/>
+  <forward-port port="25087" protocol="tcp" to-port="37257" to-addr="38.108.110.169"/>
+  <forward-port port="25087" protocol="udp" to-port="37257" to-addr="38.108.110.169"/>
+  <forward-port port="25093" protocol="tcp" to-port="35183" to-addr="38.229.164.19"/>
+  <forward-port port="25093" protocol="udp" to-port="35183" to-addr="38.229.164.19"/>
 </zone>
